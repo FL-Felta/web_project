@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.0"></script>
+        <script src="showChart.js"></script>
+        <script src="getStockData.js"></script>
+        <script src="stock.js"></script>
+        <link rel='stylesheet' type='text/css' href='main.css'>
+        <title>주식 시뮬레이션</title>
+    </head>
+    <body style="margin: 0;">
+        <div id="header-wrapper">
+            <h2>주식 시뮬레이션</h2>
+        </div>
+        <div id='result-wrapper'>
+            <canvas id="chart" style="height: 500px;"></canvas>
+        </div>
+        <div id='stats-wrapper'>
+            <span class='info-before'></span> <span class='info-after'>데이터 기다리는 중</span><br><br>
+            <span class='info-before'>총 수익 (달러):</span> <span class='info-after'></span><br>
+            <span class='info-before'>총 매수한 주식 수:</span> <span class='info-after'></span><br>
+            <span class='info-before'>총 매도한 주식 수:</span> <span class='info-after'></span><br>
+            <span class='info-before'>판매 에러:</span> <span class='info-after'></span><br>
+            <span class='info-before'>현재 보유한 주식 수:</span> <span class='info-after'></span><br><br>
+            <button id='actionButton' onclick='startstopAction()'>시작</button>
+        </div>
+        <div id='setting-wrapper'>
+            <input id='stock-symbol-input' type='text' placeholder='주식 심볼'><br>
+            <input id='limit-input' type='text' placeholder='데이터 값 (없으면 모두)'><br>
+            <input id='viewing-input' type='text' placeholder='제한(없으면 비우셈)'><br>
+            <input id='move-boolean' type='checkbox'><label for='move-boolean'>새로운 날에 이전 데이터 유지</label><br>
+            <button onclick='getDataClick(document.getElementById("stock-symbol-input").value, document.getElementById("limit-input").value)'>테이더 받기</button><br>
+        </div>
+        <div id='controls-wrapper'>
+            <button onclick='buyAction()'>매수</button>
+            <button onclick='sellAction()'>매도</button>
+            <button onclick='nextDayAction()'>다음날</button>
+        </div>
+        <p id="author">도민혁,이건형</p>
+    </body>
+</html>
